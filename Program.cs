@@ -2,13 +2,13 @@
 class Program{
     static void Main(){
         while(true){
-            MainMenu();
+            MenuInterface();
             string userChoice = OpenMainMenu();
             UserChoice(userChoice);
         }
     }
 //end main
-    static void MainMenu(){ //menu
+    static void MenuInterface(){ //menu
         System.Console.Clear();
         System.Console.WriteLine("Welcome to the Crimson Crust\nPlease select a menu choice\n1.Plain Pizza\n2.Cheese Pizza\n3.Pepperoni Pizza\n4.Exit");
     }
