@@ -1,26 +1,24 @@
-﻿
-//main
-using System;
+﻿//main
 class Program{
     static void Main(){
         while(true){
             MainMenu();
-            string userInput = GetMenuInput();
-            RouteUser(userInput);
+            string userChoice = OpenMainMenu();
+            UserChoice(userChoice);
         }
     }
 //end main
     static void MainMenu(){ //menu
-        Console.Clear();
-        Console.WriteLine("Please select a menu choice\n1. No Topping Pizza\n2. Cheese Pizza\n3. Pepperoni Pizza\n4. Exit");
+        System.Console.Clear();
+        System.Console.WriteLine("Welcome to the Crimson Crust\nPlease select a menu choice\n1.Plain Pizza\n2.Cheese Pizza\n3.Pepperoni Pizza\n4.Exit");
     }
 
-    static string GetMenuInput(){
-        return(Console.ReadLine());
+    static string OpenMainMenu(){
+        return(System.Console.ReadLine());
     }
 
-    static void RouteUser(string userInput){
-        switch(userInput){
+    static void UserChoice(string userChoice){
+        switch(userChoice){
             case "1":
                 PlainPizza();
                 break;
@@ -34,88 +32,91 @@ class Program{
                 Exit();
                 break;
             default:
-                Console.WriteLine("Invalid menu selection.");
+                System.Console.WriteLine("Invalid menu selection.");
                 Pause();
                 break;
         }
     }
 
     static void PlainPizza(){
-        Console.Clear();
-        Console.WriteLine("Here is your No-Topping Pizza:\n");
+        System.Console.Clear();
+        System.Console.WriteLine("ONE PLAIN PIZZA:)\n");
 
-        Random random = new Random(); //initialize randomness
-        int rows = random.Next(8, 13); //generates a random number between 8 and 12
+        Random rnd = new Random(); 
+        int rows = rnd.Next(8, 12); // random number between 8 and 12
+        
         for(int i = rows; i >= 1; i--){
-            for(int j = 1; j <= rows - i; j++){
-                Console.Write(" ");
+            for(int j = 1; j < rows + 1; j++){
+                System.Console.Write(" ");
             }
-            for(int k = 1; k <= i; k++){
-                Console.Write("* ");
+             for(int k = 1; k <= i; k++){
+                System.Console.Write("* ");
             }
-            Console.WriteLine();
+            System.Console.WriteLine();
         }
         Pause();
     }
 
     static void CheesePizza(){
-        Console.Clear();
-        Console.WriteLine("Here is your Cheese Pizza:\n");
+        System.Console.Clear();
+        System.Console.WriteLine("ONE CHEESE PIZZA:)\n");
 
-        Random random = new Random(); //random
-        int rows = random.Next(8, 13); 
+        Random rnd = new Random(); 
+        int rows = rnd.Next(8, 12); // random number between 8 and 12
+        
         for(int i = rows; i >= 1; i--){
-            for(int j = 1; j <= rows - i; j++){
-                Console.Write(" ");
+            for(int j = 1; j < rows + 1; j++){
+                System.Console.Write(" ");
             }
             for(int k = 1; k <= i; k++){
-                if(i == 1 || i == rows || k == 1 || k == i){ //creates border of crust around pizza
-                    Console.Write("* ");
+                if(i == 1 || i == rows || k == 1 || k == i){ 
+                    System.Console.Write("* "); //crust
                 }
                 else{
-                    Console.Write("# "); //cheese
+                    System.Console.Write("# "); //cheese
                 }
             }
-            Console.WriteLine();
+            System.Console.WriteLine();
         }
         Pause();
     }
 
     static void PepPizza(){
-        Console.Clear();
-        Console.WriteLine("Here is your Pepperoni Pizza:\n");
+        System.Console.Clear();
+        System.Console.WriteLine("ONE PEPPERONI PIZZA:)\n");
 
-        Random random = new Random(); //random
-        int rows = random.Next(8, 13); 
+        Random rnd = new Random(); 
+        int rows = rnd.Next(8, 12); // random number between 8 and 12
+        
         for(int i = rows; i >= 1; i--){
-            for(int j = 1; j <= rows - i; j++){
-                Console.Write(" ");
+            for(int j = 1; j < rows + 1; j++){
+                System.Console.Write(" ");
             }
             for(int k = 1; k <= i; k++){
-                if(i == 1 || i == rows || k == 1 || k == i){ //creates border of crust around pizza
-                    Console.Write("* ");
+                if(i == 1 || i == rows || k == 1 || k == i){ 
+                    System.Console.Write("* ");
                 }
                 else{
-                    if(random.Next(0, 8) == 0){ //generates random number of pepperonis
-                        Console.Write("[]"); //pepperoni
+                    if(rnd.Next(0, 10) == 0){ //random number of pepperonis
+                        System.Console.Write("[]"); //pepperoni
                     }
                     else{
-                        Console.Write("# "); //cheese
+                        System.Console.Write("# "); //cheese
                     }
                 }
             }
-            Console.WriteLine();
+            System.Console.WriteLine();
         }
         Pause();
     }
 
     static void Pause(){
-        System.Console.WriteLine("\nPress any key to return to Menu...\n");
-        Console.ReadKey();
+        System.Console.WriteLine("\nPress any key to return to Menu.\n");
+        System.Console.ReadKey();
     }
 
     static void Exit(){
-        Console.WriteLine("\nClosing program... \nThank you for picking Crimson Crust.\n");
-        Environment.Exit(0);
+        System.Console.WriteLine("Thank you for picking Crimson Crust. :)\n");
+        System.Environment.Exit(0);
     }
 }
